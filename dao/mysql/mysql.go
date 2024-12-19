@@ -4,6 +4,7 @@ import (
 	"bluebell/setting"
 	"fmt"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/jmoiron/sqlx"
 )
 

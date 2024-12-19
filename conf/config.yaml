@@ -16,7 +16,7 @@ log:
   max_age: 30
   max_backups: 7
 mysql:
-  host: mysql8019
+  host: localhost
   port: 3306
   dbname: "bluebell"
   user: "root"
@@ -24,7 +24,7 @@ mysql:
   max_open_conns: 200
   max_idle_conns: 50
 redis:
-  host: redis507
+  host: localhost
   port: 6379
   password: ""
   db: 0
