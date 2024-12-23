@@ -1,8 +1,8 @@
 package controller
 
 import (
+	"bluebell/logic"
 	"bluebell/models"
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -10,6 +10,7 @@ import (
 	"go.uber.org/zap"
 )
 
+// SignUpHandler 处理注册请求的函数
 func SignUpHandler(c *gin.Context) {
 	//1. 获取参数和参数校验
 	p := new(models.ParamSignup)
@@ -29,12 +30,14 @@ func SignUpHandler(c *gin.Context) {
 		return
 	}
 	//2. 业务处理
-	// if len(p.Username) == 0 || len(p.Password) == 0 || p.Password != p.RePassword {
-	// 	c.JSON(http.StatusOK, gin.H{
-	// 		"msg": "请求参数有误",
-	// 	})
-	// 	return
-	// }
-	fmt.Println(p)
+	if err := logic.SignUp(p); err != nil {
+		c.JSON(http.StatusOK, gin.H{
+			"msg": "注册失败",
+		})
+		return
+	}
+	c.JSON(http.StatusOK, gin.H{
+		"msg": "注册成功",
+	})
 	//3. 返回响应
 }
