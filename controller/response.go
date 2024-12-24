@@ -42,5 +42,4 @@ func ResponseSuccess(c *gin.Context, data interface{}) {
 		Msg:  CodeSuccess.Msg(),
 		Data: data,
 	})
-
 }
