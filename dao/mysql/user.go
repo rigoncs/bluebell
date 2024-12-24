@@ -4,7 +4,6 @@ import (
 	"bluebell/models"
 	"crypto/md5"
 	"encoding/hex"
-	"errors"
 )
 
 const secret = "bluebell"
@@ -17,7 +16,7 @@ func CheckUserExist(username string) (err error) {
 		return err
 	}
 	if count > 0 {
-		return errors.New("用户已存在")
+		return ErrorUserExist
 	}
 	return
 }
@@ -46,7 +45,7 @@ func Login(user *models.User) (err error) {
 		return err
 	}
 	if encryptPassword(oPassword) != user.Password {
-		return errors.New("密码错误")
+		return ErrorInvalidPassword
 	}
 	return
 }
