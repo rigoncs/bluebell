@@ -1,5 +1,10 @@
 package logic
 
-func GetCommunityList() (interface{}, error) {
-	return nil, nil
+import (
+	"bluebell/dao/mysql"
+	"bluebell/models"
+)
+
+func GetCommunityList() ([]*models.Community, error) {
+	return mysql.GetCommunityList()
 }

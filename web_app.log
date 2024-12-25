@@ -64,3 +64,6 @@
 {"level":"INFO","time":"2024-12-25T10:00:14.014+0800","caller":"logger/logger.go:73","msg":"/ping","status":200,"method":"GET","path":"/ping","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0}
 {"level":"INFO","time":"2024-12-25T10:00:30.334+0800","caller":"logger/logger.go:41","msg":"init logger success!"}
 {"level":"INFO","time":"2024-12-25T10:00:32.559+0800","caller":"logger/logger.go:73","msg":"/ping","status":200,"method":"GET","path":"/ping","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0}
+{"level":"INFO","time":"2024-12-25T15:20:32.812+0800","caller":"logger/logger.go:41","msg":"init logger success!"}
+{"level":"INFO","time":"2024-12-25T15:20:49.122+0800","caller":"logger/logger.go:73","msg":"/ping","status":200,"method":"GET","path":"/ping","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0.0005075}
+{"level":"INFO","time":"2024-12-25T15:21:10.115+0800","caller":"logger/logger.go:73","msg":"/api/v1/community","status":200,"method":"GET","path":"/api/v1/community","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0.001001}
