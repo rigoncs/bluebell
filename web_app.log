@@ -67,3 +67,9 @@
 {"level":"INFO","time":"2024-12-25T15:20:32.812+0800","caller":"logger/logger.go:41","msg":"init logger success!"}
 {"level":"INFO","time":"2024-12-25T15:20:49.122+0800","caller":"logger/logger.go:73","msg":"/ping","status":200,"method":"GET","path":"/ping","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0.0005075}
 {"level":"INFO","time":"2024-12-25T15:21:10.115+0800","caller":"logger/logger.go:73","msg":"/api/v1/community","status":200,"method":"GET","path":"/api/v1/community","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0.001001}
+{"level":"INFO","time":"2024-12-25T15:44:34.106+0800","caller":"logger/logger.go:41","msg":"init logger success!"}
+{"level":"INFO","time":"2024-12-25T15:44:38.976+0800","caller":"logger/logger.go:73","msg":"/api/v1/community/1","status":200,"method":"GET","path":"/api/v1/community/1","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0.0006699}
+{"level":"INFO","time":"2024-12-25T15:44:43.876+0800","caller":"logger/logger.go:73","msg":"/api/v1/community/a","status":200,"method":"GET","path":"/api/v1/community/a","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0}
+{"level":"INFO","time":"2024-12-25T15:44:47.137+0800","caller":"logger/logger.go:73","msg":"/api/v1/community/3","status":200,"method":"GET","path":"/api/v1/community/3","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0.0006816}
+{"level":"ERROR","time":"2024-12-25T15:44:50.631+0800","caller":"controller/community.go:32","msg":"logic.GetCommunityDetail failed","error":"无效的ID"}
+{"level":"INFO","time":"2024-12-25T15:44:50.631+0800","caller":"logger/logger.go:73","msg":"/api/v1/community/6","status":200,"method":"GET","path":"/api/v1/community/6","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0.0005674}
