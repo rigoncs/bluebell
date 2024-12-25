@@ -54,3 +54,4 @@
 {"level":"INFO","time":"2024-12-24T23:09:59.701+0800","caller":"logger/logger.go:73","msg":"/login","status":200,"method":"POST","path":"/login","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0.0010027}
 {"level":"INFO","time":"2024-12-24T23:10:20.580+0800","caller":"logger/logger.go:73","msg":"/ping","status":200,"method":"GET","path":"/ping","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0}
 {"level":"INFO","time":"2024-12-24T23:10:30.374+0800","caller":"logger/logger.go:73","msg":"/ping","status":200,"method":"GET","path":"/ping","query":"","ip":"127.0.0.1","user-agent":"PostmanRuntime/7.43.0","errors":"","cost":0}
+{"level":"INFO","time":"2024-12-25T08:28:23.772+0800","caller":"logger/logger.go:41","msg":"init logger success!"}
