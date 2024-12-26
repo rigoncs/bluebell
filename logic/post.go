@@ -167,3 +167,18 @@ func GetCommunityPostList(p *models.ParamPostList) (data []*models.APIPostDetail
 	}
 	return
 }
+
+func GetPostListNew(p *models.ParamPostList) (data []*models.APIPostDetail, err error) {
+	// 如果请求了指定社区的帖子列表
+	if p.CommunityID == 0 {
+		// 查所有
+		data, err = GetPostList2(p)
+	} else {
+		data, err = GetCommunityPostList(p)
+	}
+	if err != nil {
+		zap.L().Error("GetPostListNew failed", zap.Error(err))
+		return nil, err
+	}
+	return
+}
