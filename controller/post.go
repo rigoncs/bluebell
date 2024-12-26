@@ -94,3 +94,25 @@ func GetPostListHandler2(c *gin.Context) {
 	//3. 返回响应
 	ResponseSuccess(c, data)
 }
+
+func GetCommunityPostListHandler(c *gin.Context) {
+	// 初始化结构体时指定初始参数
+	p := &models.ParamPostList{
+		Page:  1,
+		Size:  10,
+		Order: models.OrderTime,
+	}
+	if err := c.ShouldBindQuery(p); err != nil {
+		zap.L().Error("GetCommunityPostListHandler with invalid params", zap.Error(err))
+		ResponseError(c, CodeInvalidParam)
+		return
+	}
+	data, err := logic.GetCommunityPostList(p)
+	if err != nil {
+		zap.L().Error("logic.GetCommunityPostList() failed", zap.Error(err))
+		ResponseError(c, CodeServerBusy)
+		return
+	}
+	//3. 返回响应
+	ResponseSuccess(c, data)
+}
