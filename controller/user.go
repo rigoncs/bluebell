@@ -69,7 +69,7 @@ func LoginHandler(c *gin.Context) {
 		return
 	}
 	ResponseSuccess(c, gin.H{
-		"user_id":   fmt.Sprintf("%d", user.UserID),
+		"user_id":   fmt.Sprintf("%d", user.UserID), // id值大于1<<53-1  int64类型的最大值是1<<63-1,js中的最大值是1<<53-1
 		"user_name": user.UserName,
 		"token":     user.Token,
 	})
