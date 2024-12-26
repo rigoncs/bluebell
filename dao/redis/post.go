@@ -1,6 +1,10 @@
 package redis
 
-import "bluebell/models"
+import (
+	"bluebell/models"
+
+	"github.com/go-redis/redis"
+)
 
 func getIDsFormKey(key string, page, size int64) ([]string, error) {
 	start := (page - 1) * size
@@ -18,4 +22,23 @@ func GetPostIDsInOrder(p *models.ParamPostList) ([]string, error) {
 	}
 	// 2. 确定查询的索引起始点
 	return getIDsFormKey(key, p.Page, p.Size)
+}
+
+func GetPostVoteData(ids []string) (data []int64, err error) {
+	//使用pipeline一次发送多条命令，减少RTT
+	pipeline := client.Pipeline()
+	for _, id := range ids {
+		key := getRedisKey(KeyPostVotedZSetPF + id)
+		pipeline.ZCount(key, "1", "1")
+	}
+	cmders, err := pipeline.Exec()
+	if err != nil {
+		return nil, err
+	}
+	data = make([]int64, 0, len(cmders))
+	for _, cmder := range cmders {
+		v := cmder.(*redis.IntCmd).Val()
+		data = append(data, v)
+	}
+	return
 }
