@@ -85,9 +85,9 @@ func GetPostListHandler2(c *gin.Context) {
 		ResponseError(c, CodeInvalidParam)
 		return
 	}
-	data, err := logic.GetPostList(p.Page, p.Size)
+	data, err := logic.GetPostList2(p)
 	if err != nil {
-		zap.L().Error("logic.GetPostList() failed", zap.Error(err))
+		zap.L().Error("logic.GetPostList2() failed", zap.Error(err))
 		ResponseError(c, CodeServerBusy)
 		return
 	}
