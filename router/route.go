@@ -6,7 +6,11 @@ import (
 	"bluebell/middlewares"
 	"net/http"
 
+	_ "bluebell/docs"
+
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 func SetupRouter(mode string) *gin.Engine {
@@ -19,6 +23,8 @@ func SetupRouter(mode string) *gin.Engine {
 	r.GET("/ping", middlewares.JWTAuthMiddleware(), func(c *gin.Context) {
 		c.String(http.StatusOK, "pong!pong!")
 	})
+
+	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	v1 := r.Group("/api/v1")
 	v1.POST("/signup", controller.SignUpHandler)
