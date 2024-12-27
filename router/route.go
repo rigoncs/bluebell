@@ -5,10 +5,10 @@ import (
 	"bluebell/logger"
 	"bluebell/middlewares"
 	"net/http"
-	"time"
 
 	_ "bluebell/docs"
 
+	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"
@@ -19,7 +19,14 @@ func SetupRouter(mode string) *gin.Engine {
 		gin.SetMode(gin.ReleaseMode)
 	}
 	r := gin.New()
-	r.Use(logger.GinLogger(), logger.GinRecovery(true), middlewares.RateLimitMiddleware(2*time.Second, 1))
+	// r.Use(logger.GinLogger(), logger.GinRecovery(true), middlewares.RateLimitMiddleware(2*time.Second, 1))
+	r.Use(logger.GinLogger(), logger.GinRecovery(true))
+
+	r.LoadHTMLFiles("./templates/index.html")
+	r.Static("/static", "./static")
+	r.GET("/", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "index.html", nil)
+	})
 
 	r.GET("/ping", middlewares.JWTAuthMiddleware(), func(c *gin.Context) {
 		c.String(http.StatusOK, "pong!pong!")
@@ -33,12 +40,16 @@ func SetupRouter(mode string) *gin.Engine {
 	v1.GET("/community", controller.CommunityHandler)
 	v1.GET("/community/:id", controller.CommunityDetailHandler)
 
+	v1.GET("/posts2", controller.GetPostListHandler2)
+	v1.GET("/posts", controller.GetPostListHandler)
+
 	v1.Use(middlewares.JWTAuthMiddleware())
 	v1.GET("/post/:id", controller.GetPostDetailHandler)
 	v1.POST("/post", controller.CreatePostHandler)
-	v1.GET("/posts2", controller.GetPostListHandler2)
-	v1.GET("/posts", controller.GetPostListHandler)
+
 	v1.POST("/vote", controller.PostVoteHandler)
+
+	pprof.Register(r)
 
 	r.NoRoute(func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
